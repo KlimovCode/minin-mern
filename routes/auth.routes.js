@@ -1,9 +1,23 @@
 const {Router} = require('express')
 const router = Router()
 const bcrypt = require('bcryptjs')
+const {check, validationResult} = require('express-validator')
+
 const User = require('../models/User')
 
-router.post('register', async (req, res) => {
+router.post('register', 
+  [
+    check('email', 'not correct email').isEmail(),
+    check('password', '6 symbols min').isLength({min:6})
+  ],
+  async (req, res) => {
+  const errors = validationResult(req)
+  if(!errors.isEmpty()) {
+    return res.status(400).json({
+      errors: errors.array(),
+      msg: 'not correct data'
+    })
+  }
   try {
     const { email, password } = req.body
     const candidate = await User.findOne({email})
