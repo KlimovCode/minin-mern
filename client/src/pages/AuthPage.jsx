@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
-import { useHttp } from '../hooks/http.hook';
+import React, { useState, useEffect } from 'react'
+import { useHttp } from '../hooks/http.hook'
+import { useMessage } from '../hooks/message.hook'
 
 export const AuthPage = () => {
-  const { loading, request, error } = useHttp()
+  const message = useMessage()
+  const { loading, request, error, clearError } = useHttp()
 
   const [value, setValue] = useState({
     email: '', password: ''
   })
+
+  useEffect(() => {
+    console.log(error);
+
+    message(error)
+    clearError()
+  }, [error, message, clearError]);
 
   const valueHandler = (event) => {
     setValue({
