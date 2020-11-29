@@ -10,7 +10,7 @@ export const useAuth = () => {
     setToken(jwt)
     setUserId(id)
     window.localStorage.setItem(userData, JSON.stringify({
-      token, userId
+      token: jwt, userId: id
     }))
   }, [])
 
@@ -21,7 +21,9 @@ export const useAuth = () => {
   }, [])
 
   useEffect(() => {
-    const data = JSON.parse(window.localStorage.getItem(userId))
+    const data = JSON.parse(window.localStorage.getItem(userData))
+    console.log('useEffect', data);
+
     if (data && data.token) login(data.token, data.userId)
   }, [login]);
 
