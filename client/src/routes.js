@@ -15,7 +15,7 @@ export const useRoutes = isAuth => {
         <Route path="/create" exact>
           <CreatePage />
         </Route>
-        <Route path="/detail" exact>
+        <Route path="/detail" >
           <DetailPage />
         </Route>
         <Redirect to="/Links" />
