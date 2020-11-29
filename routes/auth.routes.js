@@ -21,8 +21,6 @@ router.post('/register',
       })
     }
     try {
-
-
       const { email, password } = req.body
       const candidate = await User.findOne({ email })
       if (candidate)
