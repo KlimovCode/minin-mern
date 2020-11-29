@@ -7,7 +7,7 @@ import { LinkCard } from '../components/LinkCard'
 
 export const DetailPage = () => {
   const { token } = useContext(AuthContext)
-  const { request, loading } = useHttp()
+  const { request, loading, error } = useHttp()
   const [link, setLink] = useState(null)
   const linkId = useParams().id
 
@@ -25,6 +25,7 @@ export const DetailPage = () => {
   useEffect(() => {
     getLink()
   }, [getLink])
+
 
   if (loading) return <Loader />
 

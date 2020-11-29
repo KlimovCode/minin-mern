@@ -35,7 +35,7 @@ router.post('/', auth, async (req, res) => {
     res.status(500).json({ msg: 'something went wrong' })
   }
 })
-router.post('/:id', auth, async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   try {
     const link = await Link.findById(req.params.id)
     res.json(link)
