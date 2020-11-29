@@ -52,16 +52,20 @@ router.post('/login',
     try {
       const { email, password } = req.body
       const user = await User.findOne({ email })
+
       if (!user)
         return res.status(400).json({ msg: 'user not exist' })
+
       const isMatch = bcrypt.compare(password, user.password)
       if (!isMatch)
         return res.status(400).json({ msg: 'not correct' })
+
       const token = jwt.sign(
         { userId: user.id },
         config.get('jwtSecret'),
         { expiresIn: '1h' }
       )
+
       res.status(201).json({ token, userId: user.id })
 
     } catch (e) {

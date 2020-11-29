@@ -30,6 +30,14 @@ export const AuthPage = () => {
 
     }
   }
+  const loginHandler = async () => {
+    try {
+      const data = await request('/api/auth/login', 'POST', { ...value })
+      console.log(data)
+    } catch (e) {
+
+    }
+  }
 
   return (
     <div>
@@ -48,7 +56,7 @@ export const AuthPage = () => {
       </div>
       <br /> <br />
       <div>
-        <button disabled={loading}> Log in </button>
+        <button disabled={loading} onClick={loginHandler}> Log in </button>
     &nbsp;
       <button disabled={loading} onClick={registerHandler}> Sign up </button>
       </div>
