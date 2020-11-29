@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Links = () => {
+export const CreatePage = () => {
   return (
-  <div>
-    <h1>Create</h1>
-  </div>
+    <div>
+      <h1>CreatePage</h1>
+    </div>
   )
 }
