@@ -48,12 +48,14 @@ export const AuthPage = () => {
         <label htmlFor="email"> Email </label> <br />
         <input id="email" name="email"
           onChange={valueHandler}
+          value={value.email}
         />
       </div>
       <div>
         <label htmlFor="password"> Password </label> <br />
         <input id="password" name="password"
           onChange={valueHandler}
+          value={value.password}
         />
       </div>
       <br /> <br />
