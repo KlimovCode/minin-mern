@@ -1,6 +1,6 @@
 {
-  "port": 5000,
+  "port": 5001,
   "dbURI": "mongodb+srv://klimov:123qwe@cluster0.mb8l2.mongodb.net/app?retryWrites=true&w=majority",
   "jwtSecret": "secret",
-  "baseUrl": "http://localhost:5000"
+  "baseUrl": "http://localhost:5001"
 }
