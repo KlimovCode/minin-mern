@@ -27,7 +27,7 @@ router.post('/generate', auth, async (req, res) => {
     res.status(500).json({ msg: 'something went wrong' })
   }
 })
-router.post('/', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const links = await Link.find({ owner: req.user.userId })
     res.json(links)

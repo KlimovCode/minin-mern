@@ -8,6 +8,9 @@ export const LinksList = ({links})=>{
       return (
       <tr>
         <td>{i+1}</td>
+        <td>{el.from}</td>
+        <td>{el.to}</td>
+        <td>{el.clicks}</td>
       </tr>
       )
     })

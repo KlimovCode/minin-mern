@@ -17,6 +17,7 @@ export const LinksPage = () => {
         null, 
         {Authorization: `Bearer ${token}`}
       )
+      alert('hi')
       setLinks(fetched)
     } catch(e) {}
   }, [token, request])
