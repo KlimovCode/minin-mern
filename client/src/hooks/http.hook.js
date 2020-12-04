@@ -1,8 +1,11 @@
 import { useState, useCallback } from 'react'
+import { useAuth } from './auth.hook'
 
 export const useHttp = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  const { logout } = useAuth()
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
     setLoading(true)
@@ -16,6 +19,7 @@ export const useHttp = () => {
 
       const data = await response.json()
 
+      if (response.status == 401) logout()
       if (!response.ok) throw new Error(data.msg || 'Some wrong')
 
       setLoading(false)

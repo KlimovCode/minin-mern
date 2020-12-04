@@ -12,6 +12,8 @@ import 'materialize-css/dist/css/materialize.min.css'
 function App() {
   const { login, logout, token, userId, ready } = useAuth()
   const isAuth = !!token
+  console.log(isAuth);
+
   const router = useRoutes(isAuth)
 
   if (!ready) return <Loader />

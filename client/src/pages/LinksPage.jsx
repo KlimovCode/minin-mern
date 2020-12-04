@@ -1,50 +1,51 @@
-import React, {useState, useContext, useCallback, useEffect} from 'react'
-import {useHttp} from '../hooks/http.hook'
-import {AuthContext} from '../context/AuthContext'
-import {Loader} from '../components/Loader'
-import {LinksList} from '../components/LinksList'
+import React, { useState, useContext, useCallback, useEffect } from 'react'
+import { useHttp } from '../hooks/http.hook'
+import { AuthContext } from '../context/AuthContext'
+import { Loader } from '../components/Loader'
+import { LinksList } from '../components/LinksList'
 
 export const LinksPage = () => {
   const [links, setLinks] = useState([])
-  const {loading, request} = useHttp() 
-  const {token} = useContext(AuthContext)
+  const { loading, request } = useHttp()
+  const { token } = useContext(AuthContext)
 
-  const fetchLinks = useCallback(async() => {
+  const fetchLinks = useCallback(async () => {
     try {
       const fetched = await request(
-        '/api/link', 
-        'GET', 
-        null, 
-        {Authorization: `Bearer ${token}`}
+        '/api/link',
+        'GET',
+        null,
+        { Authorization: `Bearer ${token}` }
       )
-      alert('hi')
       setLinks(fetched)
-    } catch(e) {}
+    } catch (e) { }
   }, [token, request])
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchLinks()
   }, [fetchLinks])
 
-  if(loading) return <Loader />
+  if (loading) return <Loader />
+
+  if (!links.length) return <h3>have not links yet</h3>
 
   return (
-  <div>
-    <h1>Links</h1>
-    <table>
+    <div>
+      <h1>Links</h1>
+      <table>
         <thead>
           <tr>
-              <th>number</th>
-              <th>Original</th>
-              <th>Shorted</th>
-              <th>date</th>
-              <th>Detail</th>
+            <th>number</th>
+            <th>Original</th>
+            <th>Shorted</th>
+            <th>date</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
-    { !loading && <LinksList links={links} /> } 
+          {!loading && <LinksList links={links} />}
         </tbody>
       </table>
-  </div>
+    </div>
   )
 }
