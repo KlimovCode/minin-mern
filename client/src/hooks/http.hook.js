@@ -19,7 +19,7 @@ export const useHttp = () => {
 
       const data = await response.json()
 
-      if (response.status == 401) logout()
+      if (+response.status === 401) logout()
       if (!response.ok) throw new Error(data.msg || 'Some wrong')
 
       setLoading(false)
@@ -30,7 +30,7 @@ export const useHttp = () => {
       setError(e.message)
       throw e
     }
-  }, [])
+  }, [logout])
 
   const clearError = useCallback(() => setError(null), [])
 
