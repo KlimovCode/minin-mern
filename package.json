@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=production node app.js",
     "server": "node app.js",
     "client": "npm run start --prefix client",
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "cross-env NODE_ENV=production concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.6"
   }
 }
