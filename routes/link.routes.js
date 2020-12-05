@@ -11,8 +11,8 @@ router.post('/generate', auth, async (req, res) => {
     const baseUrl = config.get('baseUrl')
     const { from } = req.body
 
-    const existing = await Link.findOne({ from })
-    if (existing) return res.json({ link: existing })
+    // const existing = await Link.findOne({ from })
+    // if (existing) return res.json({ link: existing })
 
     const code = shortid.generate()
     const to = baseUrl + '/t/' + code
@@ -28,6 +28,8 @@ router.post('/generate', auth, async (req, res) => {
   }
 })
 router.get('/', auth, async (req, res) => {
+  console.log(req.user);
+
   try {
     const links = await Link.find({ owner: req.user.userId })
     res.json(links)
