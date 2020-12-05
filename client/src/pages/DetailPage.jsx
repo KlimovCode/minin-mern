@@ -30,7 +30,7 @@ export const DetailPage = () => {
   if (loading) return <Loader />
 
   return (
-    <div>
+    <div className="container">
       <h1>DetailPage</h1>
       {!loading && link && <LinkCard link={link} />}
     </div>

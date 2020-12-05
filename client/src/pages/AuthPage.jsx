@@ -42,7 +42,7 @@ export const AuthPage = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Auth</h1>
       <div>
         <label htmlFor="email"> Email </label> <br />

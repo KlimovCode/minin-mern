@@ -8,6 +8,7 @@ import { Loader } from './components/Loader'
 
 import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css'
+import './style.css'
 
 function App() {
   const { login, logout, token, userId, ready } = useAuth()

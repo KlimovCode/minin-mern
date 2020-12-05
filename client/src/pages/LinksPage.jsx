@@ -30,7 +30,7 @@ export const LinksPage = () => {
   if (!links.length) return <h3>have not links yet</h3>
 
   return (
-    <div>
+    <div className="container">
       <h1>Links</h1>
       <table>
         <thead>

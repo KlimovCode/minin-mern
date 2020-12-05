@@ -21,7 +21,7 @@ export const CreatePage = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>CreatePage</h1>
       <input type="text" value={value} onChange={(e) => setValue(e.target.value)} /> <br />
       <button onClick={handleCreate}>Create short link</button>
