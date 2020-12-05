@@ -1,0 +1,6 @@
+{
+  "port": 5001,
+  "dbURI": "mongodb+srv://klimov:123qwe@cluster0.mb8l2.mongodb.net/app?retryWrites=true&w=majority",
+  "jwtSecret": "secret",
+  "baseUrl": "http://194.67.108.218:5001"
+}
